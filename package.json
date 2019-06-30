@@ -1,11 +1,11 @@
 {
   "name": "ember-cli-expiremental-bundle-minifier",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "Aleksandr Kanunnikov <lifeart92@gmail.com>",
   "license": "MIT",
   "author": "",
   "directories": {
@@ -21,12 +21,15 @@
     "test:all": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^7.7.3"
+    "ember-cli-babel": "*",
+    "ember-cli-babel-plugin-helpers": "^1.1.0",
+    "calculate-cache-key-for-tree": "2.0.0"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "~3.10.1",
+    "ember-cli-babel-plugin-helpers": "^1.1.0",
     "ember-cli-dependency-checker": "^3.1.0",
     "ember-cli-eslint": "^5.1.0",
     "ember-cli-htmlbars": "^3.0.1",
@@ -53,6 +56,7 @@
     "node": "8.* || >= 10.*"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "after": ["ember-template-compiler", "ember-cli-babel"]
   }
 }
