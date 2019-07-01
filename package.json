@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-expiremental-bundle-minifier",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -57,6 +57,9 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "after": ["ember-template-compiler", "ember-cli-babel"]
+    "after": [
+      "ember-template-compiler",
+      "ember-cli-babel"
+    ]
   }
 }
