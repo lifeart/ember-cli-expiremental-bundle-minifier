@@ -21,9 +21,10 @@
     "test:all": "ember try:each"
   },
   "dependencies": {
+    "@babel/generator": "^7.5.0",
+    "calculate-cache-key-for-tree": "2.0.0",
     "ember-cli-babel": "*",
-    "ember-cli-babel-plugin-helpers": "^1.1.0",
-    "calculate-cache-key-for-tree": "2.0.0"
+    "ember-cli-babel-plugin-helpers": "^1.1.0"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",

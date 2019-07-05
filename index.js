@@ -1,6 +1,7 @@
 'use strict';
 
 const babelPlugin = require('./lib/babel-plugin');
+const babelLazyPlugin = require('./lib/babel-lazy-define-plugin');
 const { hasPlugin, addPlugin } = require('ember-cli-babel-plugin-helpers');
 const { cacheKeyForStableTree } = require('calculate-cache-key-for-tree');
 module.exports = {
@@ -11,9 +12,13 @@ module.exports = {
     this.babel = this.project.findAddonByName('ember-cli-babel');
     // console.log(Object.keys(parent.project));
     if (parent.env !== 'sproduction') {
-      let plugin  = this.plugin = Object.assign(babelPlugin, { baseDir() { return __dirname; } })
+      let plugin  = this.plugin = Object.assign(babelPlugin, { baseDir() { return __dirname; } });
+      let lazyPlugin = this.lazyPlugin = Object.assign(babelLazyPlugin, { baseDir() { return __dirname; } });
       if (!hasPlugin(parent, 'experimental-bundle-minifier')) {
         addPlugin(parent, plugin);
+      }
+      if (!hasPlugin(parent, 'lazy-define')) {
+        addPlugin(parent, lazyPlugin);
       }
       // if (!hasPlugin(parent.project, 'experimental-bundle-minifier')) {
       //   addPlugin(parent.project, plugin);
@@ -71,7 +76,8 @@ module.exports = {
           // require('babel-plugin-minify-mangle-names'),
           // 'minify-mangle-names',
           // 'preval',
-          this.plugin
+          this.plugin,
+          this.lazyPlugin
         ],
         //"presets": ["minify"]
       },
